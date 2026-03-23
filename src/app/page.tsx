@@ -242,10 +242,10 @@ export default function Home() {
                                   key={item.id}
                                   className="border-b border-stone-200 last:border-0"
                                 >
-                                  <td className="py-2 pr-4 text-black">
+                                  <td className="py-2 pr-4 text-lg text-black">
                                     {item.지인이름}
                                   </td>
-                                  <td className="py-2 pr-4 text-right text-black">
+                                  <td className="py-2 pr-4 text-right text-lg text-black">
                                     {Number(item.액수).toLocaleString()}원
                                   </td>
                                   {/* <td className="py-2">
