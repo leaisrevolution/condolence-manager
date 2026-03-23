@@ -26,11 +26,17 @@ export default function Home() {
   // const [지출구분, set지출구분] = useState("");
   // const [지출금액, set지출금액] = useState("");
   const { 저장목록, fetch목록, isLoading, error } = useCondolenceStore();
-  const { 지출목록, 삭제: 지출삭제 } = useExpenseStore();
+  const {
+    지출목록,
+    fetch목록: 지출Fetch목록,
+    삭제: 지출삭제,
+    error: 지출Error,
+  } = useExpenseStore();
 
   useEffect(() => {
     fetch목록();
-  }, [fetch목록]);
+    지출Fetch목록();
+  }, [fetch목록, 지출Fetch목록]);
 
   // const handle확인 = async () => {
   //   if (!상주이름 || !지인이름 || !액수 || 액수 === "-" || isNaN(Number(액수)))
@@ -158,8 +164,10 @@ export default function Home() {
           />
         </div>
 
-        {error && (
-          <p className="mt-4 text-center text-sm text-red-600">{error}</p>
+        {(error || 지출Error) && (
+          <p className="mt-4 text-center text-sm text-red-600">
+            {error || 지출Error}
+          </p>
         )}
         {isLoading ? (
           <p className="mt-10 text-center text-stone-500">

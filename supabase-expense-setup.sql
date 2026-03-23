@@ -10,5 +10,6 @@ CREATE TABLE IF NOT EXISTS expense_entries (
 
 ALTER TABLE expense_entries ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Allow all access" ON expense_entries;
 CREATE POLICY "Allow all access" ON expense_entries
   FOR ALL USING (true) WITH CHECK (true);
