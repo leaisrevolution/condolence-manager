@@ -30,7 +30,6 @@ export default function Home() {
     지출목록,
     fetch목록: 지출Fetch목록,
     추가: 지출추가,
-    삭제: 지출삭제,
     error: 지출Error,
   } = useExpenseStore();
 
@@ -349,7 +348,7 @@ export default function Home() {
                       <th className="pb-2 pr-4 text-right font-medium text-black">
                         금액 (원)
                       </th>
-                      <th className="pb-2 w-16 font-medium text-black" />
+                      {/* <th className="pb-2 w-16 font-medium text-black" /> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -362,7 +361,7 @@ export default function Home() {
                         <td className="py-2 pr-4 text-right text-black">
                           {Number(item.금액).toLocaleString()}원
                         </td>
-                        <td className="py-2">
+                        {/* <td className="py-2">
                           <button
                             type="button"
                             onClick={() => 지출삭제(item.id)}
@@ -370,7 +369,7 @@ export default function Home() {
                           >
                             삭제
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
