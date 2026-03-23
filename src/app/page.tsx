@@ -23,12 +23,13 @@ export default function Home() {
   // const [지인이름, set지인이름] = useState("");
   // const [액수, set액수] = useState("");
   const [검색어, set검색어] = useState("");
-  // const [지출구분, set지출구분] = useState("");
-  // const [지출금액, set지출금액] = useState("");
+  const [지출구분, set지출구분] = useState("");
+  const [지출금액, set지출금액] = useState("");
   const { 저장목록, fetch목록, isLoading, error } = useCondolenceStore();
   const {
     지출목록,
     fetch목록: 지출Fetch목록,
+    추가: 지출추가,
     삭제: 지출삭제,
     error: 지출Error,
   } = useExpenseStore();
@@ -47,18 +48,18 @@ export default function Home() {
   //   set액수("");
   // };
 
-  // const handle지출확인 = () => {
-  //   if (
-  //     !지출구분 ||
-  //     !지출금액 ||
-  //     지출금액 === "-" ||
-  //     isNaN(Number(지출금액))
-  //   )
-  //     return;
-  //   지출추가({ 구분: 지출구분, 금액: 지출금액 });
-  //   set지출구분("");
-  //   set지출금액("");
-  // };
+  const handle지출확인 = async () => {
+    if (
+      !지출구분 ||
+      !지출금액 ||
+      지출금액 === "-" ||
+      isNaN(Number(지출금액))
+    )
+      return;
+    await 지출추가({ 구분: 지출구분, 금액: 지출금액 });
+    set지출구분("");
+    set지출금액("");
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -281,7 +282,7 @@ export default function Home() {
         {/* 지출내역 */}
         <section className="mt-16 rounded-xl border border-stone-200 bg-white p-6">
           <h2 className="mb-6 text-lg font-bold text-black">지출내역</h2>
-          {/* <div className="mb-6 flex flex-row items-end gap-4 rounded-lg border border-stone-200 bg-stone-100 p-4">
+          <div className="mb-6 flex flex-row items-end gap-4 rounded-lg border border-stone-200 bg-stone-100 p-4">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <label
                 htmlFor="지출구분"
@@ -334,7 +335,7 @@ export default function Home() {
             >
               추가
             </button>
-          </div> */}
+          </div>
 
           {지출목록.length > 0 ? (
             <>
