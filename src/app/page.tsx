@@ -421,6 +421,9 @@ export default function Home() {
               ).toLocaleString()}
               원
             </p>
+            <p className="mt-2 text-right text-xs text-stone-500">
+              3월 21일 남은 잔액은 가족통장으로 입금
+            </p>
           </div>
         </section>
       </main>
