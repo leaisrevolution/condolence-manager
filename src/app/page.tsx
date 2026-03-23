@@ -10,8 +10,8 @@ const 상주옵션 = [
   "김재걸",
   "김재길",
   "김숙자",
-  "하누리",
-  "경복현",
+  "하영호(하누리)",
+  "경두수(경복현)",
   "신하영",
   "신하정",
   "상주이름 안적힘",
@@ -30,7 +30,7 @@ export default function Home() {
     지출목록,
     fetch목록: 지출Fetch목록,
     추가: 지출추가,
-    error: 지출Error,
+    error: 지출Error
   } = useExpenseStore();
 
   useEffect(() => {
@@ -48,12 +48,7 @@ export default function Home() {
   // };
 
   const handle지출확인 = async () => {
-    if (
-      !지출구분 ||
-      !지출금액 ||
-      지출금액 === "-" ||
-      isNaN(Number(지출금액))
-    )
+    if (!지출구분 || !지출금액 || 지출금액 === "-" || isNaN(Number(지출금액)))
       return;
     await 지출추가({ 구분: 지출구분, 금액: 지출금액 });
     set지출구분("");
@@ -312,7 +307,9 @@ export default function Home() {
                 value={
                   지출금액
                     ? (지출금액.startsWith("-") ? "-" : "") +
-                      Math.abs(Number(지출금액.replace("-", ""))).toLocaleString()
+                      Math.abs(
+                        Number(지출금액.replace("-", ""))
+                      ).toLocaleString()
                     : ""
                 }
                 onChange={(e) => {
@@ -320,7 +317,13 @@ export default function Home() {
                   const isNegative = val.startsWith("-");
                   const digits = val.replace(/\D/g, "");
                   set지출금액(
-                    isNegative && !digits ? "-" : digits ? (isNegative ? "-" + digits : digits) : ""
+                    isNegative && !digits
+                      ? "-"
+                      : digits
+                        ? isNegative
+                          ? "-" + digits
+                          : digits
+                        : ""
                   );
                 }}
                 placeholder="0"
