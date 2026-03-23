@@ -31,7 +31,10 @@ export const useCondolenceStore = create<CondolenceState>((set, get) => ({
         .order("created_at", { ascending: true });
 
       if (error) throw error;
-      set({ 저장목록: data ?? [], isLoading: false });
+      set({
+        저장목록: (data ?? []) as unknown as 조의금목록[],
+        isLoading: false,
+      });
     } catch (err) {
       set({
         error: err instanceof Error ? err.message : "데이터를 불러오는데 실패했습니다.",
