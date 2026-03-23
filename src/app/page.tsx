@@ -415,7 +415,7 @@ export default function Home() {
               원
             </p>
             <p className="mt-4 border-t border-stone-300 pt-4 text-xl font-semibold text-black">
-              조의금 합계 - 지출 합계:{" "}
+              잔액:{" "}
               {(
                 저장목록.reduce((sum, item) => sum + Number(item.액수), 0) -
                 지출목록.reduce((sum, item) => sum + Number(item.금액), 0)
