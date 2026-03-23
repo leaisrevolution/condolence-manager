@@ -256,7 +256,7 @@ export default function Home() {
                             </tbody>
                           </table>
                         </div>
-                        <p className="mt-2 text-right text-lg font-bold text-black">
+                        <p className="mt-2 text-right text-xl font-bold text-black">
                           소계: {상주총액.toLocaleString()}원
                         </p>
                       </div>
@@ -264,7 +264,7 @@ export default function Home() {
                   })}
                 </div>
                 <div className="mt-6 border-t border-stone-300 pt-4">
-                  <p className="text-right text-lg font-semibold text-black">
+                  <p className="text-right text-xl font-semibold text-black">
                     총액: {총액.toLocaleString()}원
                   </p>
                 </div>
@@ -360,8 +360,10 @@ export default function Home() {
                         key={item.id}
                         className="border-b border-stone-200 last:border-0"
                       >
-                        <td className="py-2 pr-4 text-black">{item.구분}</td>
-                        <td className="py-2 pr-4 text-right text-black">
+                        <td className="py-2 pr-4 text-lg text-black">
+                          {item.구분}
+                        </td>
+                        <td className="py-2 pr-4 text-right text-lg text-black">
                           {Number(item.금액).toLocaleString()}원
                         </td>
                         {/* <td className="py-2">
@@ -379,7 +381,7 @@ export default function Home() {
                 </table>
               </div>
               <div className="mt-4 border-t border-stone-300 pt-4">
-                <p className="text-right text-lg font-bold text-black">
+                <p className="text-right text-xl font-bold text-black">
                   지출 합계:{" "}
                   {지출목록
                     .reduce((sum, item) => sum + Number(item.금액), 0)
@@ -398,21 +400,21 @@ export default function Home() {
         {/* 조의금 - 지출 */}
         <section className="mt-10 rounded-xl border border-stone-200 bg-white p-6">
           <div className="space-y-2 text-right">
-            <p className="text-base text-black">
+            <p className="text-xl text-black">
               조의금 합계:{" "}
               {저장목록
                 .reduce((sum, item) => sum + Number(item.액수), 0)
                 .toLocaleString()}
               원
             </p>
-            <p className="text-base font-bold text-black">
+            <p className="text-xl font-bold text-black">
               지출 합계:{" "}
               {지출목록
                 .reduce((sum, item) => sum + Number(item.금액), 0)
                 .toLocaleString()}
               원
             </p>
-            <p className="mt-4 border-t border-stone-300 pt-4 text-lg font-semibold text-black">
+            <p className="mt-4 border-t border-stone-300 pt-4 text-xl font-semibold text-black">
               조의금 합계 - 지출 합계:{" "}
               {(
                 저장목록.reduce((sum, item) => sum + Number(item.액수), 0) -
